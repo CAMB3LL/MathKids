@@ -1,0 +1,100 @@
+ion-title {
+    height: 10%;
+    display: flexbox;
+}
+
+
+.divHeaderP {
+    width: 100%; 
+    height: 100%;
+    display: flex;
+  }
+
+.divHeaderT{
+    width: 40%;
+    height: 100%;
+}
+
+.divHeaderAvatar{
+    width: 60%;
+    display: flex;
+    align-self: center;    
+}
+
+.userTitle{
+    width: 80%;
+    text-align: right;
+}
+
+.avatarImg{
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+.divSubTitleMenuP{
+    width: 100%;
+    height: 30%;
+    justify-content: center;
+}
+
+.divSubTitleMenuH{
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    align-content: center;
+    //display: flex;
+    justify-content: center;
+}
+
+.SubTitleMenu{
+    font-size: 50px;
+    text-align: center;
+    color: #3D5385;
+    font-weight: bolder;
+}
+
+.SubTitle2Menu{
+    font-size: 20px;
+    text-align: center;
+    color: #3D5385;
+    font-weight: bolder;
+    margin-top: 50px;
+}
+
+.divMenuP{
+    width: 100%;
+    height: 70%;
+    justify-content: center;
+    display: flex;
+}
+
+.divMenuHL{
+    width: 10%;
+    height: 100%;
+    
+}
+
+.divMenuHR{
+    width: 10%;
+    height: 100%;
+    
+}
+
+.divMenuHC{
+    width: 80%;
+    height: 100%;
+    //align-content: center;
+    justify-content: center;
+}
+
+.menuButton{
+    margin: 10px;
+    margin-top: 30px;
+    width: 200px;       
+    align-self: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+}
