@@ -1,17 +1,17 @@
-<ion-header  [translucent]="true">  
+<ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <div class="divHeaderP">
       <div class="divHeaderT">
-        <ion-title><h1 style="width: 100px;">Math Kids</h1></ion-title>
-      </div>   
+        <ion-title><h1 style="width: 100px">Math Kids</h1></ion-title>
+      </div>
       <div class="divHeaderAvatar">
-        <h6 class="userTitle">Bienvenido, User</h6> 
-        <ion-avatar class="avatarImg">          
-          <img alt="Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />  
+        <h6 class="userTitle">Bienvenido, {{name}}</h6>
+        <ion-avatar class="avatarImg">
+          <img alt="Avatar" src="{{avatarSel}}" />
         </ion-avatar>
       </div>
-    </div>    
-  </ion-toolbar>  
+    </div>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -23,19 +23,23 @@
   </div>
 
   <div class="divMenuP">
-    <div class="divMenuHL">
-
-    </div>
+    <div class="divMenuHL"></div>
     <div class="divMenuHC">
-      <ion-button class="menuButton" (click)="ingresarDetalle('suma')">Suma</ion-button>
-      <ion-button class="menuButton" (click)="ingresarDetalle('resta')">Resta</ion-button>
-      <ion-button class="menuButton" (click)="ingresarDetalle('multiplicacion')">Multiplicacion</ion-button>
-      <ion-button class="menuButton" (click)="ingresarDetalle('division')">Division</ion-button>
+      <ion-button class="menuButton" (click)="ingresarDetalle('suma')"
+        >Suma</ion-button
+      >
+      <ion-button class="menuButton" (click)="ingresarDetalle('resta')"
+        >Resta</ion-button
+      >
+      <ion-button class="menuButton" (click)="ingresarDetalle('multiplicacion')"
+        >Multiplicacion</ion-button
+      >
+      <ion-button class="menuButton" (click)="ingresarDetalle('division')"
+        >Division</ion-button
+      >
       <ion-button class="menuButton" (click)="Salir()">Salir</ion-button>
     </div>
-    <div class="divMenuHR">
-
-    </div>
+    <div class="divMenuHR"></div>
   </div>
 
   <ion-header collapse="condense">
@@ -43,5 +47,4 @@
       <ion-title size="large" color="">Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  
 </ion-content>
