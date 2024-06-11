@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <div class="divHeaderP">
+      <div class="divHeaderT">
+        <ion-title>{{ operacion | uppercase }}</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="">
+  <div *ngIf="operacion === 'suma'" class="detailContainer"></div>
+  <div *ngIf="operacion === 'resta'" class="detailContainer"></div>
+  <div *ngIf="operacion === 'multiplicacion'" class="detailContainer"></div>
+  <div *ngIf="operacion === 'division'" class="detailContainer"></div>
+
+  <ion-button expand="full" (click)="goBack()">Volver</ion-button>
+</ion-content>

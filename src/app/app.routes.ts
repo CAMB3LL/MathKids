@@ -12,6 +12,11 @@ export const routes: Routes = [
   },
   {
     path: 'menu',
-    loadComponent: () => import('./menu/menu.page').then( m => m.MenuPage)
+    loadComponent: () => import('./menu/menu.page').then((m) => m.MenuPage),
+  },
+  {
+    path: 'detail/:operacion',
+    loadComponent: () =>
+      import('./detail/detail.page').then((m) => m.DetailPage),
   },
 ];

@@ -52,6 +52,7 @@ ion-title {
     text-align: center;
     color: #3D5385;
     font-weight: bolder;
+    margin-top: 50px;
 }
 
 .SubTitle2Menu{
@@ -59,7 +60,6 @@ ion-title {
     text-align: center;
     color: #3D5385;
     font-weight: bolder;
-    margin-top: 50px;
 }
 
 .divMenuP{
@@ -84,7 +84,8 @@ ion-title {
 .divMenuHC{
     width: 80%;
     height: 100%;
-    //align-content: center;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
