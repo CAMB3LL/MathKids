@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonAvatar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonAvatar } from '@ionic/angular/standalone';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.page.html',
-  styleUrls: ['./menu.page.scss'],
+  selector: 'app-result',
+  templateUrl: './result.page.html',
+  styleUrls: ['./result.page.scss'],
   standalone: true,
-  imports: [IonAvatar, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonAvatar, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class MenuPage implements OnInit {
+export class ResultPage implements OnInit {
 
   id:number = 0;
   name:string = 'Invitado';
+  punt:number = 0;
   avatarSel:string= '';
   listAvatars:string[] = [
     '../../assets/img/batman.png',
@@ -39,29 +40,9 @@ export class MenuPage implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = parseInt( params.get('id') || 'default1', 10);
       this.name =  params.get('name') || 'default2';
+      this.punt = parseInt( params.get('punt') || 'default3', 10);
       this.avatarSel = this.listAvatars[this.id];
     });
-  }
-
-  suma(){
-    this.router.navigate(['/game',this.id,this.name,'sum']);
-  }
-
-  resta(){
-    this.router.navigate(['/game',this.id,this.name,'res']);
-  }
-
-  multiplicacion(){
-    this.router.navigate(['/game',this.id,this.name,'mul']);
-  }
-
-  division(){
-    this.router.navigate(['/game',this.id,this.name,'div']);
-  }
-
-
-  Salir(){
-    this.router.navigate(['/home']);
   }
 
 }

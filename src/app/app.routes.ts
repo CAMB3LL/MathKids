@@ -12,8 +12,16 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'menu/:param1/:param2',
+    path: 'menu/:id/:name',
     loadComponent: () => import('./menu/menu.page').then( m => m.MenuPage)
+  },
+  {
+    path: 'game/:id/:name/:oper',
+    loadComponent: () => import('./game/game.page').then( m => m.GamePage)
+  },
+  {
+    path: 'result/:id/:name/:punt',
+    loadComponent: () => import('./result/result.page').then( m => m.ResultPage)
   },
 ];
 
