@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonAvatar, IonInput } from '@ionic/angular/standalone';
 
@@ -7,12 +8,12 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonAva
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonInput, IonAvatar, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonInput, IonAvatar, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, FormsModule],
 })
 export class HomePage {
   constructor(private router: Router) {}
 
-  inputNickName: string = '';  
+   
 
   listAvatars:string[] = [
     '../../assets/img/batman.png',
@@ -31,11 +32,14 @@ export class HomePage {
     '../../assets/img/zombie.png'
   ]
 
+  inputNickName: string = 'Invitado'; 
   numAvatar:number = 0
   initAvatar:string= this.listAvatars[0]
 
   ingresarApp(){
-    this.router.navigate(['/menu']);
+    if(this.inputNickName.length > 0){
+      this.router.navigate(['/menu',this.numAvatar,this.inputNickName]);
+    }
   }
 
   nextAvatar(){
