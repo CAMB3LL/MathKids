@@ -52,6 +52,9 @@ export class HomePage {
   inputNickName: string = '';
   numAvatar: number = 0;
   initAvatar: string = this.listAvatars[0];
+  initLevel: number = 0;
+  initLives: number = 3;
+  initScore: number = 0;
 
   async presentToast(message: string) {
     const toast = await this.toastController.create({
@@ -71,6 +74,9 @@ export class HomePage {
 
     this.appStateService.setState('nickname', this.inputNickName);
     this.appStateService.setState('avatar', this.initAvatar);
+    this.appStateService.setState('level', this.initLevel);
+    this.appStateService.setState('lives', this.initLives);
+    this.appStateService.setState('score', this.initScore);
 
     this.router.navigate(['/menu']);
   }
