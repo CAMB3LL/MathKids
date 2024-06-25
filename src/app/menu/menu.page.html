@@ -1,50 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <div class="divHeaderP">
-      <div class="divHeaderT">
-        <ion-title><h1 style="width: 100px">Math Kids</h1></ion-title>
-      </div>
-      <div class="divHeaderAvatar">
-        <h6 class="userTitle">Bienvenido, {{name}}</h6>
+    <div class="toolbar_container">
+      <div class="toolbar_container-avatars">
+        <ion-title>Hola {{ name }}</ion-title>
         <ion-avatar class="avatarImg">
-          <img alt="Avatar" src="{{avatarSel}}" />
+          <img alt="Avatar" src="{{ avatarSel }}" />
         </ion-avatar>
       </div>
+      <div class="toolbar_container-level">Nivel: {{ level }}</div>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="divSubTitleMenuP">
-    <div class="divSubTitleMenuH">
-      <h1 class="SubTitleMenu">Operacion Aritmetica</h1>
-      <h6 class="SubTitle2Menu">Selecciona una operacion</h6>
+<ion-content [fullscreen]="true" class="menu-content">
+  <div class="title-container">
+    <h1 class="title">Escoge una lección</h1>
+    <h2>Score: {{ score }}</h2>
+  </div>
+  <div class="lessons-container">
+    <div class="lesson-box" (click)="ingresarDetalle('suma')">
+      <img src="../../assets/img/suma.png" alt="Suma" />
+      <h2 class="sub-title">SUMA</h2>
+    </div>
+    <div class="lesson-box" (click)="ingresarDetalle('resta')">
+      <img src="../../assets/img/resta.png" alt="Resta" />
+      <h2 class="sub-title">RESTA</h2>
+    </div>
+    <div class="lesson-box" (click)="ingresarDetalle('multiplicacion')">
+      <img src="../../assets/img/multiplicacion.png" alt="Multiplicación" />
+      <h2 class="sub-title">MULTIPLICACION</h2>
+    </div>
+    <div class="lesson-box" (click)="ingresarDetalle('division')">
+      <img src="../../assets/img/division.png" alt="División" />
+      <h2 class="sub-title">DIVISION</h2>
     </div>
   </div>
 
-  <div class="divMenuP">
-    <div class="divMenuHL"></div>
-    <div class="divMenuHC">
-      <ion-button class="menuButton" (click)="ingresarDetalle('suma')"
-        >Suma</ion-button
-      >
-      <ion-button class="menuButton" (click)="ingresarDetalle('resta')"
-        >Resta</ion-button
-      >
-      <ion-button class="menuButton" (click)="ingresarDetalle('multiplicacion')"
-        >Multiplicacion</ion-button
-      >
-      <ion-button class="menuButton" (click)="ingresarDetalle('division')"
-        >Division</ion-button
-      >
-      <ion-button class="menuButton" (click)="Salir()">Salir</ion-button>
-    </div>
-    <div class="divMenuHR"></div>
+  <div>
+    <ion-button
+      class="menuButton"
+      expand="block"
+      (click)="Salir()"
+      class="salir-button"
+      >Salir</ion-button
+    >
   </div>
-
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large" color="">Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
 </ion-content>

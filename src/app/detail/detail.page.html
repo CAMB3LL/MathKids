@@ -1,18 +1,35 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <div class="divHeaderP">
-      <div class="divHeaderT">
-        <ion-title>{{ operacion | uppercase }}</ion-title>
+    <div class="toolbar_container">
+      <div class="toolbar_container-avatars">
+        <ng-container *ngFor="let life of [].constructor(lives)">
+          <ion-avatar class="avatarImg">
+            <img alt="Avatar" [src]="avatarSel" />
+          </ion-avatar>
+        </ng-container>
       </div>
+      <div class="toolbar_container-level">Nivel: {{ level }}</div>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="">
-  <div *ngIf="operacion === 'suma'" class="detailContainer"></div>
-  <div *ngIf="operacion === 'resta'" class="detailContainer"></div>
-  <div *ngIf="operacion === 'multiplicacion'" class="detailContainer"></div>
-  <div *ngIf="operacion === 'division'" class="detailContainer"></div>
+<ion-content>
+  <ng-container *ngIf="operacion === 'suma'">
+    <app-suma (gameFinished)="onGameFinished($event)"></app-suma>
+  </ng-container>
+  <ng-container *ngIf="operacion === 'resta'">
+    <app-resta (gameFinished)="onGameFinished($event)"></app-resta>
+  </ng-container>
+  <ng-container *ngIf="operacion === 'multiplicacion'">
+    <app-multiplicacion
+      (gameFinished)="onGameFinished($event)"
+    ></app-multiplicacion>
+  </ng-container>
+  <ng-container *ngIf="operacion === 'division'">
+    <app-division (gameFinished)="onGameFinished($event)"></app-division>
+  </ng-container>
+
+  Score: {{score}}
 
   <ion-button expand="full" (click)="goBack()">Volver</ion-button>
 </ion-content>

@@ -1,5 +1,7 @@
 {
   "name": "MathKids",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular-standalone"
 }

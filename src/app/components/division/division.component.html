@@ -1,0 +1,20 @@
+<div class="question-container">
+  <h2>Division</h2>
+  <div class="question-box">
+    <p class="question-text">
+      Pregunta {{ operationService.currentQuestionIndex + 1 }}: ¿Cuánto es
+      {{ operationService.questions[operationService.currentQuestionIndex].a }}
+      /
+      {{ operationService.questions[operationService.currentQuestionIndex].b }}?
+    </p>
+    <div class="answer-box">
+      <input
+        type="number"
+        [(ngModel)]="operationService.answer"
+        class="answer-input"
+      />
+      <span class="answer-line"></span>
+    </div>
+    <button (click)="checkAnswer()" class="submit-button">Enviar</button>
+  </div>
+</div>

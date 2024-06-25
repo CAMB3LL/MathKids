@@ -1,40 +1,28 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary" >
-    <ion-title>
-      Math Kids
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title> Math Kids </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-
-  <h1 ion-text color="secondary"></h1>
-  <div class="divAvatarPadre">
-    <div class="divAvatar">
-      <ion-button class="btnAvatar" (click)="backAvatar()">    
-        Ant<ion-icon name="arrow-back-outline"></ion-icon>
-      </ion-button>
-      <ion-avatar class="imgAvatar">        
-        <img alt="Avatar" src={{initAvatar}} />        
-      </ion-avatar>
-      <ion-button class="btnAvatar" (click)="nextAvatar()">
-        Sig<ion-icon name="arrow-forward-outline"></ion-icon>
-      </ion-button>
-    </div>
-    <div>
-      <h2 class="SubTitleAvatar">Elige un avatar</h2>
-    </div>
+<ion-content [fullscreen]="true" class="home-content">
+  <div class="avatar-selection">
+    <ion-button class="btn-avatar" (click)="backAvatar()"> << </ion-button>
+    <ion-avatar class="img-avatar">
+      <img alt="Avatar" src="{{initAvatar}}" />
+    </ion-avatar>
+    <ion-button class="btn-avatar" (click)="nextAvatar()"> >> </ion-button>
   </div>
 
-  <div class="divIngresoPadre">   
-    <div class="divIngreso">
-      <ion-input [(ngModel)]="inputNickName" type="text"  class="txtNickName" label="NickName" label-placement="floating" fill="outline"></ion-input>
-      <ion-button class="btnIngreso" (click)="ingresarApp()">Ingresar</ion-button>
-    </div>
+  <div class="input-section">
+    <ion-input
+      [(ngModel)]="inputNickName"
+      type="text"
+      class="txt-nick-name"
+      placeholder="NickName"
+      fill="outline"
+    ></ion-input>
+    <ion-button class="btn-ingreso" expand="block" (click)="ingresarApp()"
+      >Ingresar</ion-button
+    >
   </div>
-
-
-
-
-
 </ion-content>

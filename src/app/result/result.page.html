@@ -1,26 +1,38 @@
-<ion-header  [translucent]="true">  
+<ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <div class="divHeaderP">
-      <div class="divHeaderT">
-        <ion-title><h1 style="width: 100px;">Math Kids</h1></ion-title>
-      </div>   
-      <div class="divHeaderAvatar">
-        <h6 class="userTitle">Bienvenido, {{name}}</h6> 
-        <ion-avatar class="avatarImg">          
-          <img alt="Avatar" src={{avatarSel}}/>  
+    <div class="toolbar_container">
+      <div class="toolbar_container-avatars">
+        <ion-title>Jugador: {{ name }}</ion-title>
+        <ion-avatar class="avatarImg">
+          <img alt="Avatar" src="{{ avatarSel }}" />
         </ion-avatar>
       </div>
-    </div>    
-  </ion-toolbar>  
+      <div class="toolbar_container-level">Nivel: {{ level }}</div>
+    </div>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-
-  <h1 style="color: black;">RESULTADOS {{punt}}</h1>
-
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">result</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="result-content">
+  <div class="result-message" *ngIf="result === 'WIN'">
+    <ion-avatar class="result-avatar">
+      <img alt="Avatar" src="{{ avatarSel }}" />
+    </ion-avatar>
+    <h2>¡Felicidades! Has ganado.</h2>
+    <p>Tu puntaje es: {{ score }}</p>
+  </div>
+  <div class="result-message" *ngIf="result === 'LOST'">
+    <ion-avatar class="result-avatar">
+      <img alt="Avatar" src="{{ avatarSel }}" />
+    </ion-avatar>
+    <h2>Lo siento, has perdido.</h2>
+    <p>Tu puntaje es: {{ score }}</p>
+  </div>
+  <div class="result-button">
+    <ion-button expand="full" *ngIf="result === 'WIN'" (click)="goBack()"
+      >Continuar</ion-button
+    >
+    <ion-button expand="full" *ngIf="result === 'LOST'" (click)="Salir()"
+      >Salir</ion-button
+    >
+  </div>
 </ion-content>

@@ -1,101 +1,77 @@
-ion-title {
-    height: 10%;
-    display: flexbox;
+@import "src/theme/variables.scss";
+
+.toolbar_container {
+  display: flex;
+  align-items: center;
 }
 
-
-.divHeaderP {
-    width: 100%; 
-    height: 100%;
-    display: flex;
-  }
-
-.divHeaderT{
-    width: 40%;
-    height: 100%;
+.toolbar_container-avatars {
+  display: flex;
+  width: 70%;
 }
 
-.divHeaderAvatar{
-    width: 60%;
-    display: flex;
-    align-self: center;    
+.toolbar_container-level {
+  display: flex;
+  width: 30%;
+  align-items: center;
+  justify-content: center;
 }
 
-.userTitle{
-    width: 80%;
-    text-align: right;
+.avatarImg {
+  width: 50px;
+  height: 50px;
 }
 
-.avatarImg{
-    width: 40px;
-    height: 40px;
-    margin: 5px;
+.menu-content {
+  --ion-background-color: var(--ion-color-light);
 }
 
-.divSubTitleMenuP{
-    width: 100%;
-    height: 30%;
-    justify-content: center;
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: column;
 }
 
-.divSubTitleMenuH{
-    width: 100%;
-    height: 100%;
-    align-items: stretch;
-    align-content: center;
-    //display: flex;
-    justify-content: center;
+.title {
+  font-family: "CursiveFont", cursive;
+  font-size: 40px;
+  font-weight: bold;
+  color: $primary-color;
 }
 
-.SubTitleMenu{
-    font-size: 50px;
-    text-align: center;
-    color: #3D5385;
-    font-weight: bolder;
-    margin-top: 50px;
+.sub-title {
+  font-family: "CursiveFont", cursive; /* Asegúrate de que esta fuente esté importada en variables.scss o global.scss */
+  font-size: 20px;
+  font-weight: bold;
+  color: $primary-color;
 }
 
-.SubTitle2Menu{
-    font-size: 20px;
-    text-align: center;
-    color: #3D5385;
-    font-weight: bolder;
+.lessons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
 }
 
-.divMenuP{
-    width: 100%;
-    height: 70%;
-    justify-content: center;
-    display: flex;
+.lesson-box {
+  width: 150px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 50px;
 }
 
-.divMenuHL{
-    width: 10%;
-    height: 100%;
-    
-}
-
-.divMenuHR{
-    width: 10%;
-    height: 100%;
-    
-}
-
-.divMenuHC{
-    width: 80%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.menuButton{
-    margin: 10px;
-    margin-top: 30px;
-    width: 200px;       
-    align-self: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 20px;
+.lesson-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }

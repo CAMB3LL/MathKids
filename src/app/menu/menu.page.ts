@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 import {
   IonContent,
   IonHeader,
@@ -8,8 +9,11 @@ import {
   IonToolbar,
   IonButton,
   IonAvatar,
+  IonIcon,
 } from '@ionic/angular/standalone';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AppStateService } from '../app-state.service'; // Importa el servicio de estado
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -25,44 +29,82 @@ import { ActivatedRoute, Router } from '@angular/router';
     IonToolbar,
     CommonModule,
     FormsModule,
+    IonIcon,
   ],
 })
-export class MenuPage implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+export class MenuPage implements OnInit, OnDestroy {
+  operacion: string | null | undefined;
+  private livesSubscription: Subscription | undefined;
 
-  id: number = 0;
+  constructor(
+    private router: Router,
+    private appStateService: AppStateService,
+    private toastController: ToastController
+  ) {}
+
   name: string = 'Invitado';
   avatarSel: string = '';
-  listAvatars: string[] = [
-    '../../assets/img/batman.png',
-    '../../assets/img/aguacate.png',
-    '../../assets/img/alien.png',
-    '../../assets/img/cactus.png',
-    '../../assets/img/cafe.png',
-    '../../assets/img/niño.png',
-    '../../assets/img/niño2.png',
-    '../../assets/img/niño3.png',
-    '../../assets/img/nativo.png',
-    '../../assets/img/niña.png',
-    '../../assets/img/niña2.png',
-    '../../assets/img/oveja.png',
-    '../../assets/img/perezoso.png',
-    '../../assets/img/zombie.png',
-  ];
+  level: number = 0;
+  lives: number = 0;
+  score: number = 0;
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'top',
+      color: 'warning',
+      cssClass: 'custom-toast',
+    });
+    await toast.present();
+  }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
-      this.id = parseInt(params.get('id') || 'default1', 10);
-      this.name = params.get('name') || 'default2';
-      this.avatarSel = this.listAvatars[this.id];
+    this.name = this.appStateService.getState('nickname');
+    this.avatarSel = this.appStateService.getState('avatar');
+    this.level = this.appStateService.getState('level');
+    this.score = this.appStateService.getState('score');
+
+    this.livesSubscription = this.appStateService.state$.subscribe((state) => {
+      this.lives = state.lives;
+      this.level = state.level;
+      this.score = state.score;
     });
   }
 
+  ngOnDestroy() {
+    if (this.livesSubscription) {
+      this.livesSubscription.unsubscribe();
+    }
+  }
+
   ingresarDetalle(operacion: string) {
-    this.router.navigate(['/detail', operacion]);
+    const nivelOperacion: Record<string, number> = {
+      suma: 0,
+      resta: 1,
+      multiplicacion: 2,
+      division: 3,
+    };
+
+    if (!(operacion in nivelOperacion)) {
+      this.presentToast('Operación no válida');
+      return;
+    }
+
+    if (this.level < nivelOperacion[operacion]) {
+      this.presentToast('Aun no tienes el nivel para ingresar a esta leccion');
+    } else if (this.level > nivelOperacion[operacion]) {
+      this.presentToast('Ya has realizado esta leccion');
+    } else {
+      this.router.navigate(['/detail', operacion]);
+    }
   }
 
   Salir() {
+    this.appStateService.setState('nickname', '');
+    this.appStateService.setState('avatar', '');
+    this.appStateService.setState('level', 0);
+    this.appStateService.setState('lives', 3);
     this.router.navigate(['/home']);
   }
 }
